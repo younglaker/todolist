@@ -19,17 +19,27 @@
 
 <script>
 
+import Storage from '../assets/js/storage.js'
+console.log(Storage);
 export default {
-  name: 'index',
-  data () {
-    return {
-        title: 'Hello Vue!',
-        items: [],
-        new_item: ''
-    }
-  },
-  methods: {
-  
+    name: 'index',
+    data () {
+        return {
+            title: 'Hello Vue!',
+            items: Storage.fetch(),
+            new_item: ''
+        }
+    },
+    watch: {
+        items: {
+            handler: function (item) {
+                Storage.save(item)
+            },
+            deep: true
+        }
+    },
+    methods: {
+
         toggleFinish: function (item) {
             item.is_finished = !item.is_finished
         },
@@ -40,8 +50,8 @@ export default {
             })
             this.new_item = ''
         }
-    
-  }
+
+    }
 }
 </script>
 
@@ -57,11 +67,14 @@ ul {
 }
 
 li {
-  display: inline-block;
-  margin: 0 10px;
+  margin-bottom: 10px;
 }
 
 a {
   color: #42b983;
 }
+.finished {
+    text-decoration: line-through
+}
+
 </style>
