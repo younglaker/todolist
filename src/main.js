@@ -5,6 +5,8 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 
 import 'bootstrap/dist/css/bootstrap.css'
+import 'jquery/dist/jquery.min.js'
+//import 'bootstrap/dist/js/bootstrap.js'
 import Vue from 'vue'
 import App from './App'
 
